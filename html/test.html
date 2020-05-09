@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>Document</title>
+</head>
+
+<body></body>
+<script>
+	// function xxx() {
+	//     return new Promise( (sss, ccc) => {
+	//       var timeOut = Math.random() * 2;
+	//       if (timeOut < 1) {
+	//         sss("200 OK");
+	//       } else {
+	//         ccc("timeout in " + timeOut + " seconds.");
+	//       }
+	//     })
+
+	//   }
+	//   xxx()
+	// .then(result => {
+	//         return result + 1;
+	//       })
+	//       .then(arr => {
+	//         console.log(arr);
+	//       })
+	// 	.catch(xxx => {
+	// 		console.log(xxx)
+	// 	});
+	// let a = [0,1];
+	// let b = [0,1];
+	// if([]){
+	// 	console.log([0] === [0])
+	// }
+	// console.log([1<2<3,3<2<1])
+
+	// function aaa() {
+	//   return (function(){
+	//     return false
+	//   })
+	// }
+
+	// const c = aaa()
+	// console.log(c)
+	// if(c){
+	//   alert("上下文先后执行")
+	// }else{
+	//   alert("异步执行")
+	// }
+	var a = 1;
+	const test = async function () {
+		// return Promise.reject(1111);
+		try {
+			aaaa * aaaa;
+			return Promise.resolve("233333");
+		} catch (errr) {
+			return Promise.reject(errr);
+		}
+	};
+	function aaa (){
+		test()
+		.then(res => a = 2)
+		.catch(ess =>  a = 2);
+	}
+
+	function bbb () {
+		aaa();
+		return a;
+	}	
+
+	console.log(bbb())
+
+    //   function Promise(excutor) {
+    //   var self = this
+    //   self.onResolvedCallback = []
+    //   function resolve(value) {
+    //     self.data = value
+    //     self.onResolvedCallback.forEach(callback => callback(value))
+    //   }
+    //   excutor(resolve.bind(self))
+    // }
+    // Promise.prototype.then = function(onResolved) {
+    //   var self = this
+    //   return new Promise(resolve => {
+    //     self.onResolvedCallback.push(function() {
+    //       var result = onResolved(self.data)
+    //       if (result instanceof Promise) {
+    //         result.then(resolve)
+    //       } else {
+    //         resolve(result)
+    //       }
+    //     })
+    //   })
+    // }
+</script>
+
+</html>
