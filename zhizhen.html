@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="content"></div>
+</body>
+
+<script>
+    const obj = {
+        a:1,
+        b:2
+    };
+    const objnew = obj;
+    objnew.a = 2;
+    console.log(objnew,obj);
+    var content = document.getElementById("content");
+    console.log(content)
+    content.innerText = JSON.stringify(obj)
+</script>
+
+</html>

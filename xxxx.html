@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="container"></ul>
+</body>
+
+<script>
+    // //需要插入的容器
+    // let ul = document.getElementById('container');
+    // // 插入十万条数据
+    // let total = 100000;
+    // // 一次插入 20 条
+    // let once = 20;
+    // //总页数
+    // let page = total / once
+    // //每条记录的索引
+    // let index = 0;
+    // //循环加载数据
+    // function loop(curTotal, curIndex) {
+    //     if (curTotal <= 0) {
+    //         return false;
+    //     }
+    //     //每页多少条
+    //     let pageCount = Math.min(curTotal, once);
+    //     setTimeout(() => {
+    //         for (let i = 0; i < pageCount; i++) {
+    //             let li = document.createElement('li');
+    //             li.innerText = curIndex + i + ' : ' + ~~(Math.random() * total)
+    //             ul.appendChild(li)
+    //         }
+    //         loop(curTotal - pageCount, curIndex + pageCount)
+    //     }, 0)
+    // }
+    // loop(total, index);
+
+
+    const a = [{
+            id: "5277",
+            roleId: "0001",
+            permitCode: "*@dataform:/system/ParamItemList",
+            __key: "71EF5F54-B889-417E-B967-522B9A5A57A2"
+        },
+        {
+            id: "5278",
+            roleId: "0001",
+            permitCode: "rdc@dataform:/system/ParamList",
+            __key: "0E481FC5-5FEB-4228-9A14-6DF6A71E7C73"
+        },
+        {
+            id: "5279",
+            roleId: "0001",
+            permitCode: "rd@dataform:/system/RoleInfo",
+            __key: "86595D61-8666-4C8C-A972-11488DA57A47"
+        },
+        {
+            id: "5280",
+            roleId: "0001",
+            permitCode: "rc@dataform:/system/RoleList",
+            __key: "E840851F-9718-4EB2-AD7F-444974FF3B5A"
+        },
+        {
+            id: "5281",
+            roleId: "0001",
+            permitCode: "ru@dataform:/system/RoleListForDashboard",
+            __key: "8FF8DCA9-BBC3-4BAA-A102-E33566866F0D"
+        }
+    ];
+
+
+    function removeRepeatStr(str) {
+        var newStr = '';
+        var len = str.length;
+        for (var i = 0; i < len; i++) {
+            if (newStr.indexOf(str[i]) == -1) {
+                newStr = newStr + str[i];
+            }
+        }
+        return newStr;
+    }
+
+    const dataModify = (data) => {
+        const newArr = [];
+        for (let i = 0; i < data.length; i++) {
+            const newA = data[i].permitCode.split('@')[0].split("");
+            const newstr = newA.map((item) => {
+                if (item == "*") {
+                    return "rdu"
+                } else if (item == "c") {
+                    return "ru"
+                } else {
+                    return item
+                }
+            })
+            newArr.push(removeRepeatStr(newstr.join("")).split(""))
+        }
+        console.log(newArr, 'asdad');
+        return newArr
+    };
+    const newArr = dataModify(a);
+
+    function same(arr) {
+        var firstSame = []
+        for (let i = 0; i < arr[0].length; i++) {
+            if (arr[1].indexOf(arr[0][i]) != -1) {
+                firstSame.push(arr[0][i])
+            }
+        }
+        if (arr.length == 2 && firstSame.length != 0) {
+            return firstSame;
+        }
+        console.log(firstSame)
+        for (let i = 2; i < arr.length; i++) {
+            console.log(firstSame,firstSame.length)
+            if (firstSame.length == 0) {
+                return false
+            }
+            for (let j = 0; j < firstSame.length; j++) {
+                console.log(arr[i].indexOf(firstSame[j]),j)
+                if (arr[i].indexOf(firstSame[j]) == -1) {
+                    firstSame.splice(j, 1);
+                }
+            }
+        }
+        if (firstSame.length != 0) {
+            return firstSame
+        }
+    }
+
+    console.log(same(newArr))
+    /*  
+        c->r,u   r->r  u->u  d->d  * ->rcdu
+     */
+</script>
+
+</html>

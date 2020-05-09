@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: auto;
+    }
+    html{
+        text-align: center;
+        height: 2000px;
+    }
+    .section-title{
+        width: 100px;
+        height: 100px;
+        border: 1px solid black;
+    }
+    .section-title:before {
+        content: "wwwwwww";
+        width: 50px;
+        height: 50px;
+        background: blue;
+        border-radius: 50%;
+        /* Other styles */
+    }
+
+    .section-title:hover {
+        transform: scale(1.2);
+    }
+
+    .ribbon {
+        background-color: #5BC8F7;
+        position: relative;
+    }
+
+    .ribbon:before {
+        content: "Look at this orange box.";
+        background-color: #FFBA10;
+        border-color: black;
+        border-style: dotted;
+        width: 50px;
+        height: 50px;
+    }
+    span{
+  position: relative;
+  text-decoration: underline;
+  color: #00F;
+  /* cursor: help; */
+}
+
+span:hover::after {
+  content: attr(data-descr);
+  position: absolute;
+  left: 0;
+  top: 24px;
+  min-width: 200px;
+  border: 1px #aaaaaa solid;
+  border-radius: 10px;
+  background-color: #ffffcc;
+  padding: 12px;
+  color: #000000;
+  font-size: 14px;
+  z-index: 1;
+}
+.btn {
+      position: relative;
+
+      display: block;
+      margin: 100px auto;
+      padding: 10px;
+      font-size: 14px;
+      background: #fff;
+      color: green;
+      border: 1px solid green;
+      cursor: pointer;
+    }
+    [tip]:after {
+      content: attr(tip);
+      visibility: hidden;
+      /* 实现垂直居中 */
+      position: absolute;
+      top: 50%;
+      transform: translate(-5px, -50%);
+      transition: all .3s;
+      left: 100%;
+      opacity: 0;
+
+      /* 空白问题 */
+      white-space: pre;
+      font-size: 16px;
+      padding: 5px 10px;
+      background-color: rgba(18,26,44,0.8);
+      color: #fff;
+      box-shadow: 1px 1px 14px rgba(0,0,0,0.1);
+        /* min-width: 200px; */
+      max-width: 200px;
+
+    }
+    [tip]:hover {
+      /* ie兼容 */
+      overflow: visible
+    }
+    .btn:hover:after {
+        max-width: 200px;
+
+        /* min-width: 200px; */
+        height: 50px;
+      opacity: .8;
+      transition: all .3s;
+      transform: translate(5px, -50%);
+      visibility: visible;
+      display: block;
+    }
+</style>
+<body>
+    <!-- <div class="section-title">2333333</div>
+    <span class="ribbon">Notice where the orange box is.</span> -->
+    <!-- <p>这是上面代码的实现<br />
+        我们有一些 <span data-descr="collection of words and punctuation">文字</span> 有一些
+        <span data-descr="small popups which also hide again">提示</span>。<br />
+        把鼠标放上去<span data-descr="not to be taken literally">看看</span>.
+      </p> -->
+      <div style="height: 500px;width: 300px;background-color: #ffffcc;"></div>
+      <button id="btn" tip="a23311233123213123123123 bwwwwewëweweewwērrreytytytēcdef">鼠标移动到这</button>
+      <!-- <button id="btn">iiiii</button> -->
+</body>
+<script>
+    console.log(document.getElementById('btn'));
+    const btn = document.getElementById('btn');
+    btn.onclick = function(){
+      console.log(23333)
+      //  document.documentElement.scrollTop = 0;
+      scrollTo(0,0);
+    };
+</script>
+</html>

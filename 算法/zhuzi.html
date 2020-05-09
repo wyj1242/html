@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>三根柱子A,B,C,n(>=0)个圆盘,将圆盘从A移动到C需要几步?</h1>
+    <p>要求</p>
+    <ul>
+        <li>第一步先C和先B的结果总是相差两步</li>
+        <li>如果n为奇数,先B少于先C两步,n偶数先C少于先B两步</li>
+        <li>求最优解</li>
+    </ul>
+</body>
+<script>
+    // var largestDivisibleSubset = function (nums) {
+    //     //对子集中所有的元素进行整除判断
+    //     var zhengchu = function (s) {
+    //         var l = s.length;
+    //         let flag = true;
+    //         for (let i = 0; i < l - 1; i++) {
+    //             for (let j = i + 1; j < l; j++) {
+    //                 if ((s[j] % s[i] != 0) && (s[i] % s[j] != 0)) {
+    //                     flag = false;
+    //                     break
+    //                 }
+    //             }
+    //         }
+    //         return flag
+    //     };
+    //     var l = nums.length;
+    //     //找出数组所有的子集
+    //     for (let i = 1; i < l - 1; i--) {
+
+    //     }
+    // };
+
+    // var largestDivisibleSubset = function (nums) {
+    //     if (nums.length == 0)
+    //         return [];
+    //     var dp = [1],
+    //         res = [0];
+    //     nums.sort((a, b) => a - b);
+    //     for (var i = 1; i < nums.length; i++) {
+    //         var result = 1,
+    //             index = i;
+    //         for (var ii = i - 1; ii >= 0; ii--) {
+    //             if (nums[i] % nums[ii] == 0) {
+    //                 if (dp[ii] + 1 > result) {
+    //                     result = dp[ii] + 1;
+    //                     index = ii;
+    //                 }
+    //             }
+    //         }
+    //         dp[i] = result;
+    //         res.push(index);
+    //     }
+    //     console.log(res)
+    //     var index,
+    //         max = 0;
+    //     for (var i = 0; i < dp.length; i++) {
+    //         if (dp[i] > max) {
+    //             index = i;
+    //             max = dp[i];
+    //         }
+    //     }
+    //     var result = [nums[index]];
+    //     for (var i = index; i !== res[i];) {
+    //         result.push(nums[res[i]]);
+    //         i = res[i];
+    //     }
+    //     return result;
+    // };
+
+    // console.log(largestDivisibleSubset([1,2,4,8,10]))
+
+    var str = "1,2,3,4,5,6";
+    var arr = str.split(",");
+    console.log(arr)
+
+    for (var a2 = []; a2.push([]) < arr.length;)
+    var l = Math.pow(2, arr.length) - 1;
+    console.log(l)
+    for (var i = 1; i <= l; i++) {
+        var s2 = i.toString(2).split("").reverse();
+        var t = [];
+            m = -1;
+        for (var k = 0; k < s2.length; k++) {
+            if (s2[k] == "1") {
+                t.push(arr[k]);
+                m++;
+            }
+        }
+        a2[m].push(t);
+    }
+
+
+    // var a2 = [];
+    // var l = Math.pow(2, arr.length) - 1;
+    // console.log(l)
+    // for (var i = 1; i <= l; i++) {
+    //     var s2 = i.toString(2).split("").reverse();
+    //     console.log(i.toString(2),s2)
+    //     var t = [];
+    //     for (var k = 0; k < s2.length; k++) {
+    //         if (s2[k] == "1") {
+    //             t.push(arr[k]);
+    //         }
+    //     }
+    //     a2.push(t);
+    // }
+
+    // for (var a2 = []; a2.push([]) < arr.length;);
+    // var l = Math.pow(2, arr.length) - 1;
+    // for (var i = 1; i <= l; i++) {
+    //     var t = [];
+    //     for (var s = i, k = 0; s > 0; s >>= 1, k++)
+    //         if (s & 1 == 1)
+    //             t.push(arr[k]);
+    //     a2[t.length - 1].push(t.join(""));
+    // }
+    console.log(a2)
+</script>
+
+</html>
